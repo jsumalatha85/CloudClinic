@@ -1,0 +1,278 @@
+body {
+  
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+	  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	  sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+	  monospace;
+  }
+  .fnt 
+  {
+	  font-size: 12px;
+  }
+  .bdr
+  {
+	  border:1px solid #cccccc;
+	  height:150px;}
+  ol
+  {
+	  margin-bottom: 0rem !important;
+  } 
+  .personDetbg p 
+  {
+	  margin-bottom: 0rem !important;
+  }
+  p 
+  {
+	  margin-bottom: 0.40rem !important;
+  }
+  span.spe 
+  {
+	  background-color: #FFEED2; 
+	  padding: 3px;
+  }
+  .pd
+  {
+	  padding:40px;
+	  margin-bottom: 50px;
+  }
+  .divpd
+  {
+	  padding:10px;
+  }
+  .divbg
+  {
+	  background-color:#efefef;
+  }
+  .rbdr
+  {
+	  border-right:1px solid #cccccc;
+  }
+  .progress
+  {
+	  margin-top:20px !important; 
+	  height:0.30rem !important;
+  }
+  .progress-bar
+  {
+	  background-color:#9DC254 !important;
+  }
+  @media only screen and (max-width: 700px) 
+  {
+	  h5
+	  {
+		  padding-top:30px;
+	  }
+	  .rbdr
+	  {
+		  border-right:0px solid #cccccc; 
+		  border-bottom:1px solid #cccccc; 
+		  padding-bottom: 20px;
+	  }
+  }
+  hr
+  {
+	  margin:0rem !important;
+  }
+  /*
+  label
+  {
+	  margin-left:17px; 
+	  margin-bottom:0.30rem;
+  }
+  */
+  .personDetbg
+  {
+	  background-color:#dff8f6;
+	  color:#58b8b1;
+	  border-radius:5px;
+  }
+  .imgbdr
+  {
+	  border:1px solid #ccc; 
+	  margin:20px; 
+	  height:180px
+  }
+  @media screen and (min-width: 769px) {
+	.mt-00{
+	  margin-top:0px !important;
+	}
+  }
+  .mt-20{
+	margin-top:-50px !important;
+  }
+  .updmrgn
+  {
+	  margin-top:80px;
+  }
+  .updmrg
+  {
+	  margin-top:60px;
+  } 
+  h5
+  {
+	  padding-top:10px;
+  }
+  .mt10
+  {
+	  margin-top:10px;
+  }
+  .mt5
+  {
+	  margin-top:5px;
+  }
+  .ml20
+  {
+	  margin-left:20px;
+  }
+  .form-group 
+  {
+	  margin-bottom: 0.5rem !important;
+  }
+  .form-control 
+  {
+	  display: block; 
+	  width: 100%;   
+	  height: calc(1.5em + .75rem + 2px); 
+	  padding: .375rem .75rem; 
+	  font-size: 1rem; 
+	  font-weight: 400; 
+	  line-height: 1.5; 
+	  color: #495057; 
+	  background-color: #fff; 
+	  background-clip: padding-box; 
+	  border: 1px solid #ced4da; 
+	  border-radius: .25rem; 
+	  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  .text-center
+  {
+	  align:center;
+  }
+  .text-left
+  {
+	  align:left;
+  }
+  .text-right
+  {
+	  align:right;
+  }
+  .progress {
+	  display: -ms-flexbox;
+	  display: flex;
+	  overflow: hidden;
+	  line-height: 0;
+	  font-size: .75rem;
+	  background-color: #e9ecef;
+	  border-radius: .25rem;
+  }
+  .progress-bar {
+	  display: -ms-flexbox;
+	  display: flex;
+	  -ms-flex-direction: column;
+	  flex-direction: column;
+	  -ms-flex-pack: center;
+	  justify-content: center;
+	  overflow: hidden;
+	  color: #fff;
+	  text-align: center;
+	  white-space: nowrap;
+	  background-color: #9DC254;
+	  transition: width .6s ease;
+  }
+  .sidebar {
+	margin: 0;
+	padding: 0;
+	width: 300px;
+	background-color: #fff;
+	position: fixed;
+	height: 100%;
+	overflow: auto;
+  
+  }
+  .sidebar a {
+	display: block;
+	color: black;
+	padding: 16px;
+	text-decoration: none;
+	text-align:left !important;
+	  border:1px solid #cccccc;
+  }
+  .sidebar a.active {
+	background-color: #787887;
+	color: white;
+  }
+  .sidebar a:hover:not(.active) {
+	background-color: #555;
+	color: white;
+	text-decoration:none;
+  }
+  div.content {
+	padding: 1px 16px;
+	width:100%;
+  }
+  .center{
+	  margin-left: auto;
+	  margin-right: auto;
+  }
+  
+  @media screen and (max-width: 700px) {
+	.sidebar {
+	  width: 100%;
+	  height: auto;
+	  position: relative;
+	}
+	.sidebar a {float: left;}
+	div.content {margin-left: 0;}
+  }
+  @media screen and (max-width: 400px) {
+	.sidebar a {
+	  float: none;
+	}
+  }
+  
+  /* @font-face {
+	  font-family: "Lemon Milk Pro";
+	  src: url("./assests/fonts/Lemon\ Milk\ Pro\ Bold.otf"),
+	  url("./assests/fonts/Lemon\ Milk\ Pro\ Bold\ Italic.otf"),
+	  url("./assests/fonts/Lemon\ Milk\ Pro\ Medium.otf"),
+	  url("./assests/fonts/Lemon\ Milk\ Pro\ Medium\ Italic.otf"),
+	  url("./assests/fonts/Lemon\ Milk\ Pro\ Regular.otf"),
+	  url("./assests/fonts/Lemon\ Milk\ Pro\ Regular\ Italic.otf"),
+	  url("./assests/fonts/Lemon\ Milk\ Pro\ Ultra\ Light\ Italic.otf");
+  } */
+  
+  @font-face {
+	  font-family: "Lemon Milk Pro Bold";
+	  src: url("./assests/fonts/Lemon\ Milk\ Pro\ Bold.otf")
+  }
+  
+  @font-face {
+	  font-family: "Lemon Milk Pro Bold Italic";
+	  src: url("./assests/fonts/Lemon\ Milk\ Pro\ Bold\ Italic.otf")
+  }
+  @font-face {
+	  font-family: "Lemon Milk Pro Medium";
+	  src: url("./assests/fonts/Lemon\ Milk\ Pro\ Medium.otf")
+  }
+  @font-face {
+	  font-family: "Lemon Milk Pro Medium Italic";
+	  src: url("./assests/fonts/Lemon\ Milk\ Pro\ Medium\ Italic.otf")
+  }
+  @font-face {
+	  font-family: "Lemon Milk Pro Regular";
+	  src:url("./assests/fonts/Lemon\ Milk\ Pro\ Regular.otf")
+  }
+  @font-face {
+	  font-family: "Lemon Milk Pro Regular Italic";
+	  src: url("./assests/fonts/Lemon\ Milk\ Pro\ Regular\ Italic.otf")
+  }
+  @font-face {
+	  font-family: "Lemon Milk Pro Light";
+	  src: url("./assests/fonts/Lemon\ Milk\ Pro\ Ultra\ Light\ Italic.otf")
+  }
