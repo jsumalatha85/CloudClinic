@@ -10,17 +10,20 @@ import FormTextInput from "../component/common/FormTextInput";
 import ShowMessage from "../component/common/ShowMessage";
 import DoctorHome from "./DoctorHome";
 import emailIcon from "../assests/svg/email.svg";
-import bloodgroup from "../assests/svg/bloodgroup.svg";
 import person from "../assests/svg/person.svg";
 import phone from "../assests/svg/phone.svg";
 import Select from "../component/common/select";
+import bloodgroup from "../assests/svg/bloodgroup.svg";
+
+var todayDate = new Date().toISOString().slice(0, 10);
+// console.log(todayDate);
 
 const disableFutureDate = () => {
   const today = new Date();
   const dd = String(today.getDate() - 1).padStart(2, "0");
   const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   const yyyy = today.getFullYear();
-  //console.log(yyyy + "-" + mm + "-" + dd, "Date");
+  // console.log(yyyy + "-" + mm + "-" + dd, "Date");
   return yyyy + "-" + mm + "-" + dd;
 };
 
@@ -29,7 +32,7 @@ const disablePastDate = () => {
   const dd = String(today.getDate()).padStart(2, "0");
   const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   const yyyy = today.getFullYear() - 100;
-  //console.log(yyyy + "-" + mm + "-" + dd, "Date");
+  // console.log(yyyy + "-" + mm + "-" + dd, "Date");
   return yyyy + "-" + mm + "-" + dd;
 };
 
@@ -55,6 +58,19 @@ const validationSchema = Yup.object().shape({
     .required()
     .oneOf(["Male", "Female", "Other"])
     .label("Gender"),
+  // blood_group: Yup.string()
+  //   .required("Blood Group is Required")
+  //   .oneOf([
+  //     "A Positive",
+  //     "A Negative",
+  //     "AB Positive",
+  //     "AB Negative",
+  //     "B Positive",
+  //     "B Negative",
+  //     "O Positive",
+  //     "O Negative",
+  //   ])
+  //   .label("Blood group"),
 });
 
 const genderOption = [
@@ -72,10 +88,6 @@ const genderOption = [
   },
 ];
 const patientBloodGroupOption = [
-  {
-    id: "",
-    name: "Blood Group",
-  },
   {
     id: "A Positive",
     name: "A Positive",
@@ -123,8 +135,7 @@ function NewPatient(props) {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [gender, setGender] = useState("");
-  const [blood_group, setBloodGroup] = useState([]);
-  const [showBloodGroup, setShowBloodGroup] = useState([]);
+  const [bloodGroup, setBloodGroup] = useState();
 
   const getPatient = async () => {
     if (location.state && location.state.id != "") {
@@ -152,18 +163,21 @@ function NewPatient(props) {
     }
     setLoad(false);
   };
+
   const handleSubmit = async ({
     firstname,
     lastname,
     dob,
     email,
     mobile,
-    blood_group,
+
     gender,
   }) => {
     try {
       setLoad(true);
       if (location.state && location.state.id != "") {
+        console.log(firstname);
+        console.log(lastname);
         const res = await doctorHomePageApi.updatePatient(
           location.state.id,
           firstname,
@@ -172,7 +186,7 @@ function NewPatient(props) {
           gender,
           email,
           mobile,
-          blood_group
+          bloodGroup
         );
         console.log("res--", res);
         setOpen(true);
@@ -197,7 +211,7 @@ function NewPatient(props) {
         gender,
         email,
         mobile,
-        blood_group
+        bloodGroup
       );
       console.log(res);
 
@@ -245,7 +259,6 @@ function NewPatient(props) {
               gender: gender,
               email: email,
               mobile: mobile,
-              blood_group: blood_group,
             }}
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
@@ -268,7 +281,6 @@ function NewPatient(props) {
                         <FormTextInput
                           type="text"
                           name="firstname"
-                          value={firstname}
                           className="mt-30 form-control indent"
                           icon={
                             <img
@@ -279,13 +291,11 @@ function NewPatient(props) {
                           }
                           placeholder="First Name"
                           onClick={() => setOpen(false)}
-                          onChange={(e) => setFirstname(e.target.value)}
                         />
                       </div>
                       <div className="form-group  mt-3">
                         <FormTextInput
                           type="text"
-                          value={lastname}
                           name="lastname"
                           className="mt-30 form-control indent"
                           icon={
@@ -297,7 +307,6 @@ function NewPatient(props) {
                           }
                           placeholder="Last Name"
                           onClick={() => setOpen(false)}
-                          onChange={(e) => setLastname(e.target.value)}
                         />
                       </div>
                       <div className="form-group mt-4">
@@ -305,7 +314,6 @@ function NewPatient(props) {
                           <FormTextInput
                             type="email"
                             name="email"
-                            value={email}
                             className="mt-30 form-control indent"
                             icon={
                               <img
@@ -316,7 +324,6 @@ function NewPatient(props) {
                             }
                             placeholder="Email Address"
                             onClick={() => setOpen(false)}
-                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                       </div>
@@ -325,7 +332,6 @@ function NewPatient(props) {
                           <FormTextInput
                             type="tel"
                             name="mobile"
-                            value={mobile}
                             maxlength="10"
                             className="mt-30 form-control indent"
                             icon={
@@ -337,18 +343,19 @@ function NewPatient(props) {
                             }
                             placeholder="Mobile Number"
                             onClick={() => setOpen(false)}
-                            onChange={(e) => setMobile(e.target.value)}
                           />
                         </div>
                       </div>
                       <div className="form-group">
-                        <div className="col-sm-12 col-md-12 col-lg-12 mt-2">
+                        <div className="col-sm-12 col-md-12 col-lg-12 mt-3">
                           <Select
                             type="text"
-                            name="bloodGroup"
-                            className="mt-30 form-control indent"
+                            name="Blood Group"
+                            id="Blood Group"
                             options={patientBloodGroupOption}
-                            placeholder="Blood Group"
+                            value={bloodGroup}
+                            placeholder="Select Blood Group"
+                            className="mt-30 form-control indent"
                             icon={
                               <img
                                 src={bloodgroup}
@@ -356,9 +363,7 @@ function NewPatient(props) {
                                 style={{ marginLeft: "4px" }}
                               />
                             }
-                            value={blood_group}
                             onChange={(e) => setBloodGroup(e.target.value)}
-                            visible={showBloodGroup}
                           />
                         </div>
                       </div>
@@ -367,27 +372,22 @@ function NewPatient(props) {
                         <div className="col-sm-12 col-md-7 col-lg-7">
                           <FormTextInput
                             type="date"
-                            value={dob}
+                            // value={dob}
                             className="form-control mt-1"
                             name="dob"
                             min={disablePastDate()}
                             max={disableFutureDate()}
                             placeholder="Date of Birth"
                             onClick={() => setOpen(false)}
-                            onChange={(e) => setDOB(e.target.value)}
                           />
                         </div>
                       </div>
 
-                      <label className="mt-2">Gender</label>
+                      <label className="mt-2 mb-1">Gender</label>
 
                       <div className="col-sm-12 col-md-12 col-lg-12">
                         <div className=" form-group form-check form-check-inline">
-                          <FormRadioInput
-                            name="gender"
-                            data={genderOption}
-                            onClick={() => setOpen(false)}
-                          />
+                          <FormRadioInput name="gender" data={genderOption} />
                         </div>
                       </div>
                       <div class=" row ml-3 ml-25">

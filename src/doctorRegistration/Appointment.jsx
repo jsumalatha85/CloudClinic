@@ -185,8 +185,11 @@ function Appointment(props) {
   };
 
   const handleEditChange = (e) => {
-    console.log(e.target.value);
-    setModalDay([...modalDay, e.target.value]);
+    let days = [...modalDay, e.target.value];
+    const obj = [
+      ...new Map(days.map((item) => [JSON.stringify(item), item])).values(),
+    ];
+    setModalDay(obj);
   };
 
   const handleModalSubmit = () => {
@@ -574,7 +577,7 @@ function Appointment(props) {
                             <div className="avldays">
                               {days.map((item) => {
                                 return (
-                                  <div className="col-3 ps-3 m-2 form-check">
+                                  <div className="form-check ">
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
@@ -746,17 +749,18 @@ function Appointment(props) {
                     <Modal.Body>
                       {addNew ? (
                         <div className="row">
-                          <div className="col-sm-6 col-md-6 col-lg-6">
+                          <div className="col-sm-6 col-md-6 col-lg-6 dropdown">
+                            {/* <CustomText>Days</CustomText> */}
                             <Select
                               type="text"
                               name="days"
                               id="days"
-                              className="form-control mb-3"
+                              className="form-control"
                               options={days}
                               value=""
                               onChange={handleEditChange}
                               onClick={() => setOpen1(false)}
-                              placeholder="Select a  Day"
+                              placeholder="Select a Day"
                             />
                             {modalDay.length > 0
                               ? modalDay.map((item) => {
@@ -778,11 +782,12 @@ function Appointment(props) {
                               : null}
                           </div>
                           <div className="col-sm-6 col-md-6 col-lg-6">
+                            {/* <CustomText> Duration</CustomText> */}
                             <Select
                               type="text"
                               name="slot"
                               id="slot"
-                              className="form-control mb-3"
+                              className="form-control"
                               options={durations}
                               value={duration}
                               onChange={(e) => setDuration(e.target.value)}
@@ -799,7 +804,7 @@ function Appointment(props) {
                               type="text"
                               name="days"
                               id="days"
-                              className="form-control mb-3"
+                              className="form-control"
                               options={days}
                               value={day}
                               onChange={(e) => setDay(e.target.value)}
@@ -809,7 +814,6 @@ function Appointment(props) {
                           </div>
                         </div>
                       )}
-
                       <div className="row">
                         <div className="col-sm-6 col-md-6 col-lg-4">
                           <CustomText>From Time</CustomText>

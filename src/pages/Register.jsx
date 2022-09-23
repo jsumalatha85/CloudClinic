@@ -67,10 +67,10 @@ function Register(props) {
         setLoad(false);
         setOpen(true);
 
-        console.log(
-          typeof JSON.parse(JSON.parse(response.data._server_messages)[0])
-            .message
-        );
+        // console.log(
+        //   typeof JSON.parse(JSON.parse(response.data._server_messages)[0])
+        //     .message
+        // );
 
         setMessage(
           JSON.parse(JSON.parse(response.data._server_messages)[0]).message

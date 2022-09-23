@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
 import doctorHomePageApi from "../api/doctorHomePage";
@@ -70,7 +70,6 @@ function StartConsultation(props) {
   const [bp, setBP] = useState();
   const [openModel, setOpenModal] = useState(false);
   const [consultationHistory, setConsultationHistory] = useState([]);
-  const [consultationId, setConsultationId] = useState("");
   const [summary, setSummary] = useState("");
 
   const intake = [
@@ -670,7 +669,7 @@ function StartConsultation(props) {
                           type="text"
                           name="symptom"
                           id="symptom"
-                          className="form-control"
+                          class="form-control"
                           options={symptom}
                           value={symptomSel}
                           placeholder="Select Symptoms"
@@ -703,7 +702,7 @@ function StartConsultation(props) {
                           type="text"
                           name="diagnosis"
                           id="diagnosis"
-                          className="form-control"
+                          class="form-control"
                           options={diag}
                           // value={diagnosisSel}
                           placeholder="Select Diagnosis"
@@ -772,7 +771,7 @@ function StartConsultation(props) {
                             type="text"
                             name="consumption"
                             id="consumption"
-                            className="form-control"
+                            class="form-control"
                             options={consumption}
                             value={consump}
                             onChange={(e) => {
@@ -791,7 +790,7 @@ function StartConsultation(props) {
                             type="text"
                             name="intake"
                             id="intake"
-                            className="form-control"
+                            class="form-control"
                             options={intake}
                             value={intakes}
                             onChange={(e) => {
@@ -1063,6 +1062,7 @@ function StartConsultation(props) {
                           </table>
                         </div>
                       )}
+                      <h5 class="mt-3">Notes</h5>
                       <div className="form-group  mt-2">
                         <input
                           type="text"

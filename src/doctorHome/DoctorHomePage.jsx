@@ -12,7 +12,7 @@ import perm_contact_calendar from "../assests/png/perm_contact_calendar.png";
 function DoctorHomePage(props) {
   const navigate = useNavigate();
   const [patient, setPatient] = useState();
-  // const [appointment, setAppointment] = useState();
+  const [appointment, setAppointment] = useState();
   const [consultation, setConsultation] = useState();
   const [patientRecord, setPatientRecord] = useState();
   const [currentAppt, setCurrentAppt] = useState();
@@ -23,7 +23,7 @@ function DoctorHomePage(props) {
       const response = await doctorHomePage.getDetails(email);
       console.log(response);
       setPatient(response.data.message.Patient);
-      // setAppointment(response.data.message.Open_Scheduled);
+      setAppointment(response.data.message.Open_Scheduled);
       setConsultation(response.data.message.All);
       setCurrentAppt(response.data.message.Open);
       setPatientRecord(response.data.message.Closed);
@@ -103,7 +103,6 @@ function DoctorHomePage(props) {
                           </div>
                         </Link>
                       </div>
-
                       <div className="col-sm-12 col-md-3 col-lg-3 mb-4 ">
                         <Link to="/consultationhistory" className="homelink">
                           <div className="bg-pink cat">

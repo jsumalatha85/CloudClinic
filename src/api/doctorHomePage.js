@@ -270,7 +270,7 @@ const getDetails = async (email) => {
 
 const getAllPatient = async (searchString, limitStart, pageSize) => {
   const data = await client.get(
-    `/api/resource/Patient?fields=["name", "first_name", "last_name", "patient_name","email","mobile","dob","sex", "creation", "blood_group"]${searchString}&limit_start=${limitStart}&order_by=creation desc&limit_page_length=${pageSize}`
+    `/api/resource/Patient?fields=["name", "first_name", "last_name", "patient_name","email","mobile","dob","sex", "blood_group", "creation"]${searchString}&limit_start=${limitStart}&order_by=creation desc&limit_page_length=${pageSize}`
   );
   return data;
 };

@@ -15,7 +15,13 @@ const Select = ({
   return (
     <div className="form-group">
       {icon}
-      <select name={name} id={name} onChange={onChange} {...rest}>
+      <select
+        name={name}
+        id={name}
+        onChange={onChange}
+        {...rest}
+        // className="form-control"
+      >
         <option hidden value="">
           {placeholder}
         </option>

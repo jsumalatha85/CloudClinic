@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import doctorHomePageApi from "../api/doctorHomePage";
 import storage from "../auth/storage";
 import CustomActivityIndicator from "../component/common/CustomActivityIndicator";
+// import CustomButton from "../component/common/CustomButton";
 import CustomTextInput from "../component/common/CustomTextInput";
 import EmptyComponent from "../component/common/EmptyComponent";
 import DoctorHome from "./DoctorHome";
@@ -140,6 +141,7 @@ function UpcomingAppointment(props) {
                               return (
                                 <tr>
                                   <td>
+                                    {" "}
                                     {appDate[2] +
                                       "-" +
                                       appDate[1] +
@@ -153,8 +155,8 @@ function UpcomingAppointment(props) {
                                   </td>
                                   {item.status === "Closed" ? (
                                     <td
-                                      className="pointer"
                                       onClick={() => handleClick(item.name)}
+                                      style={{ cursor: "pointer" }}
                                     >
                                       {item.patient_name}
                                     </td>
@@ -167,9 +169,8 @@ function UpcomingAppointment(props) {
                             })}
                           </tbody>
                         </table>
-                        <div className="psNote">
+                        <div>
                           * Click on patient name to view Consultation Summary
-                          on closed status
                         </div>
                       </>
                     ) : (

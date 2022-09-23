@@ -14,7 +14,6 @@ function UpcomingAppointment(props) {
   const [date, setDate] = useState();
   const [show, setShow] = useState(false);
   const [load, setLoad] = useState(false);
-  const [inputs, setInputs] = useState();
   const [showDate, setShowDate] = useState(false);
 
   // const upcomingAppointment = async () => {
@@ -70,7 +69,7 @@ function UpcomingAppointment(props) {
           value
         );
         console.log("Date", res);
-        if (res.ok == true) {
+        if (res.ok === true) {
           setShow(true);
           setUpcomingApp(res.data.data);
         } else {
@@ -115,7 +114,7 @@ function UpcomingAppointment(props) {
       console.log("location.state---", location.state);
       let todayDate = date;
 
-      if (location.state && location.state.date != "") {
+      if (location.state && location.state.date !== "") {
         todayDate = location.state.date;
         setDate(location.state.date);
       }

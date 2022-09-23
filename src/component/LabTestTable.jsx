@@ -73,7 +73,7 @@ function LabTestTable({ data, onChange, getIntake, getComments }) {
                   type="text"
                   name="consumption"
                   id="consumption"
-                  className="form-control"
+                  class="form-control"
                   options={intake}
                   // value={intakeLab}
                   onChange={(e) => getIntake(e.target.value)}

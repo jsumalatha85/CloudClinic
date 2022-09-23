@@ -54,6 +54,7 @@ function Education(props) {
         return;
       }
       console.log(e.target.files[0].type, " upload");
+
       const filesArray = Array.from(e.target.files).map((file) => ({
         file: URL.createObjectURL(file),
         name: e.target.files[0].name.split(".")[1],
@@ -69,8 +70,15 @@ function Education(props) {
 
       reader.onloadend = async () => {
         base64data = reader.result;
+
         setBase64([...base64, base64data]);
         console.log(base64data.split(";")[0].split("/")[1], "base64data");
+        let fileExtension = base64data.split(";")[0].split("/")[1];
+        let fileName;
+        if (fileExtension === "pdf") {
+          fileName = "test.pdf";
+          console.log(fileName);
+        } else fileName = "test.jpg";
       };
 
       value === 1
@@ -117,12 +125,10 @@ function Education(props) {
           setShowData4(true);
           return;
         } else setShowData4(false);
-
         setLoad(true);
         const doctorID = await storage.getID();
         console.log(doctorID);
         console.log("Files", selectedFiles);
-
         for (let index = 0; index < base64.length; index++) {
           const response = await doctorRegistration.imageUpload(
             doctorID,
@@ -146,7 +152,7 @@ function Education(props) {
       const doctorID = await storage.getID();
       // console.log(doctorID);
       const res = await doctorRegistration.attachImage(doctorID);
-      console.log("res---", res.data.data);
+      console.log(res.data.data);
       if (res.data.data.length > 0) {
         setData1(res.data.data[0].file_url);
         setFileType1(res.data.data[0].file_name.split(".")[1]);
@@ -157,6 +163,7 @@ function Education(props) {
         setData4(res.data.data[3].file_url);
         setFileType4(res.data.data[3].file_name.split(".")[1]);
       }
+
       // setLoad(false);
       // var element = document.getElementsById("cert_image");
       // console.log(element);
@@ -195,6 +202,7 @@ function Education(props) {
                         visible={showData1}
                       />
                     </div>
+
                     {data1 ? (
                       <img
                         src={

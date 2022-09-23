@@ -64,7 +64,7 @@ function NewAppointment(props) {
         setTime();
         const doctorID = await storage.getID();
         const res1 = await doctorHomePageApi.getScheduledSlots(doctorID, date);
-        // console.log("Res1", res1);
+        console.log("Res1", res1);
         setSchedule(res1.data.data);
         setLoad(false);
         setShow(false);
@@ -240,9 +240,9 @@ function NewAppointment(props) {
                           type="text"
                           name="patient"
                           id="patient"
-                          className="form-control"
                           options={patient}
                           value={inputs}
+                          className="form-control"
                           onChange={handleChange}
                           disabled={
                             location.state && location.state.appointmentID
@@ -330,15 +330,15 @@ function NewAppointment(props) {
                                         backgroundColor:
                                           time === item
                                             ? "#9DC254"
-                                            : schedule.some(
-                                                (time) =>
-                                                  (time.appointment_time.split(
-                                                    ":"
-                                                  )[0].length == 1
-                                                    ? "0" +
-                                                      time.appointment_time
-                                                    : time.appointment_time) ===
-                                                  item
+                                            : schedule.some((time) =>
+                                                time.appointment_time.split(
+                                                  ":"
+                                                )[0].length === 1
+                                                  ? "0" +
+                                                      time.appointment_time ===
+                                                    item
+                                                  : time.appointment_time ===
+                                                    item
                                               ) ||
                                               (currentDate === date &&
                                                 (item.split(":")[0] <
@@ -361,12 +361,12 @@ function NewAppointment(props) {
                                       name="slot"
                                       value={item.from_time}
                                       onClick={() =>
-                                        schedule.some(
-                                          (time) =>
-                                            (time.appointment_time.split(":")[0]
-                                              .length == 1
-                                              ? "0" + time.appointment_time
-                                              : time.appointment_time) === item
+                                        schedule.some((time) =>
+                                          time.appointment_time.split(":")[0]
+                                            .length === 1
+                                            ? "0" + time.appointment_time ===
+                                              item
+                                            : time.appointment_time === item
                                         ) ||
                                         (currentDate === date &&
                                           (item.split(":")[0] < currentHr ||

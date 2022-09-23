@@ -196,7 +196,7 @@ function PatientHealthRecord(props) {
 
                       return (
                         <>
-                          <div className="p-3 mt-4 rounded bgColor1">
+                          <div className="p-3 rounded bgColor1 mt-4">
                             <div className="form-group row">
                               <div className="col-2" style={{ width: "50px" }}>
                                 <img src={person} atl="" />
@@ -285,12 +285,12 @@ function PatientHealthRecord(props) {
                                   <div className="form-group row">
                                     <div
                                       className="col-2"
-                                      style={{ width: "40px" }}
+                                      style={{ width: "50px" }}
                                     >
                                       <img src={calendar} atl="" />
                                     </div>
                                     <div className="col-9">
-                                      <label className="control-label">
+                                      <label className="control-label ">
                                         Visit Date
                                       </label>
                                       <br />
